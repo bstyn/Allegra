@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auction</title>
+    <link rel="stylesheet" href="/css/auction.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <p>Allegra</p>
+    </div>
+    <div class="context-menu">
+      <div><a href="/">Main Page</a></div>
+      <div><a href="/auctions">Auctions</a></div>
+      <div><a href="/profile">Profile</a></div>
+    </div>
+  </header>
+  <div>
+    <h1>Auction</h1>
+    <div th:text="${id}"></div>
+  </div>
+</body>
+</html>
