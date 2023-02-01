@@ -28,7 +28,7 @@ public class Profile {
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     @Getter @Setter private Address address;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(
             name = "users_auction",
             joinColumns = { @JoinColumn(name = "profile_id")},

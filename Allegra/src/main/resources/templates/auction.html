@@ -19,7 +19,12 @@
   </header>
   <div>
     <h1>Auction</h1>
-    <div th:text="${id}"></div>
+    <p th:text="${auction.auction_id}"></p>
+    <p th:text="${auction.name}"></p>
+    <p><img th:src="${auction.url}" class="auction_image"></img></p>
+    <p th:text="${auction.start_date}"></p>
+    <p th:text="${auction.end_date}"></p>
+    <p th:text="${auction.price}"></p>
   </div>
 </body>
 </html>

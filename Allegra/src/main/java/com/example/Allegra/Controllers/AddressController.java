@@ -6,5 +6,5 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AddressController {
 
     @Autowired
-    AddressRepository repository;
+    private AddressRepository repository;
 }
