@@ -25,7 +25,15 @@
     <p th:text="${auction.start_date}"></p>
     <p th:text="${auction.end_date}"></p>
     <p th:text="${auction.price}"></p>
-    <p th:text="${auction.reviews}"></p>
+    <div th:each="review : ${reviews}" class="auctions_auction" >
+      <form action="#" th:action="@{'/api/reviews/delete/{id}'(id=${review.review_id})}" th:method="get" >
+        <button type="submit" class="btn">
+          Delete
+        </button>
+      </form>
+      <p th:text="${review.content}"></p>
+      <p th:text="'Score: ' + ${review.score}"></p>
+    </div>
   </div>
 </body>
 </html>

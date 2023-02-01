@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface ReviewRepository extends CrudRepository<Review,Long> {
 
     Optional<Review> findById(Long id);
-    @Query("SELECT * FROM review WHERE auction_id = :#{#id}")
-    Optional<Review> findByAuctionId(@Param("id") Long id);
+    @Query(value = "SELECT * FROM review WHERE auction_id = :#{#id}",nativeQuery = true)
+    Iterable<Review> findByAuctionId(@Param("id") Long id);
+
+    void deleteById(Long id);
 }
