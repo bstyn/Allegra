@@ -10,8 +10,8 @@ public class Address {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
-    @Getter private Long id;
+    @Column(name = "address_id")
+    @Getter private Long address_id;
 
     @Getter @Setter private String country;
     @Getter @Setter private String postcode;

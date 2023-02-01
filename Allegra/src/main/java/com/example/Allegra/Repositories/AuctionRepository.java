@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface AuctionRepository extends CrudRepository<Auction, Long> {
 
     Optional<Auction> findById(Long id);
+
+    Iterable<Auction> findAll();
 }
