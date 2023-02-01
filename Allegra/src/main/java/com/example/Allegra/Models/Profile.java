@@ -1,9 +1,9 @@
 package com.example.Allegra.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Locale;
 
@@ -12,19 +12,37 @@ public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String name;
-    private String lastname;
-    private String email;
-    private Date birth_date;
+    @Getter Long id;
+    @Getter @Setter private String name;
+    @Getter @Setter private String lastname;
+    @Getter @Setter private String email;
+    @Getter @Setter private Date birth_date;
+    @Getter @Setter private String username;
+    @Getter @Setter private String password;
+
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    @Getter @Setter private Address address;
 
     protected Profile() {}
 
-    public Profile(String name, String lastname,String email,Date birth_date){
+    public Profile(String name, String lastname,String email,String username, String password){
         this.name = name;
         this.lastname = lastname;
         this.email = email;
-        this.birth_date = birth_date;
+        this.username = username;
+        this.password = password;
     }
 
+    @Override
+    public String toString(){
+        return "Name: " + this.name + "\n" +
+                "Last Name: " + this.lastname + "\n" +
+                "Email: " + this.email + "\n" +
+                "Username:" + this.username + this.address;
+
+
+    }
 }
