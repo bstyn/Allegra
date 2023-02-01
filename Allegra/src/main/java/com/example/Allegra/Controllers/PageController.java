@@ -46,7 +46,27 @@ public class PageController {
         model.addAttribute("profile",result);
         return "editProfile";
     }
-
+    @GetMapping("/review/edit/{id}")
+    public String reviewEdit(@PathVariable("id") Long id,Model model) {
+        RestTemplate restTemplate = new RestTemplate();
+        Review result = restTemplate.getForObject("http://localhost:8080/api/reviews/review/" + id, Review.class);
+        model.addAttribute("review", result);
+        return "editReview";
+    }
+    @GetMapping("/auction/add")
+    public String addAuction(){
+        if(profileId == null){
+            return "redirect:/login";
+        }
+        return "addAuction";
+    }
+    @GetMapping("/auction/edit/{id}")
+    public String auctionEdit(@PathVariable("id") Long id,Model model){
+        RestTemplate restTemplate = new RestTemplate();
+        Auction auction = restTemplate.getForObject("http://localhost:8080/api/auctions/" + id, Auction.class);
+        model.addAttribute("auction", auction);
+        return "editAuction";
+    }
     @GetMapping("/login")
     public String login(Model model){
         return "login";

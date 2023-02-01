@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+<header>
+  <div class="logo">
+    <p>Allegra</p>
+  </div>
+  <div class="context-menu">
+    <a href="/"><div>Main Page</div></a>
+    <a href="/auctions"><div>Auctions</div></a>
+    <a href="/profile"><div>Profile</div></a>
+  </div>
+</header>
+<h1>Edit</h1>
+<form th:action="@{'/api/reviews/edit/{id}'(id=${review.review_id})}" th:object="${review}" method="get">
+
+  <label for="content">Content</label>:
+  <input type="text" id="content" name="content" th:value=${review.content}> <br />
+
+  <label for="score">Score</label>:
+  <input type="text" id="score" name="score" th:value=${review.score}> <br />
+
+  <input type="submit" value="Apply" />
+</form>
+</body>
+</html>

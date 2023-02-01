@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+<header>
+  <div class="logo">
+    <p>Allegra</p>
+  </div>
+  <div class="context-menu">
+    <a href="/"><div>Main Page</div></a>
+    <a href="/auctions"><div>Auctions</div></a>
+    <a href="/profile"><div>Profile</div></a>
+  </div>
+</header>
+<h1>Edit</h1>
+<form th:action="@{'/api/auctions/edit/{id}'(id=${auction.auction_id})}" th:object="${auction}" method="put">
+
+  <label for="name">Name</label>:
+  <input type="text" id="name" name="name" th:value=${auction.name}> <br />
+
+  <label for="url">Image Url</label>:
+  <input type="text" id="url" name="url" th:value="${auction.url}"/> <br />
+
+  <label for="price">Price</label>:
+  <input type="text" id="price" name="price" th:value="${auction.price}"/> <br />
+
+  <input type="submit" value="Apply" />
+</form>
+</body>
+</html>

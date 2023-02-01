@@ -10,4 +10,6 @@ public interface AuctionRepository extends CrudRepository<Auction, Long> {
     Optional<Auction> findById(Long id);
 
     Iterable<Auction> findAll();
+
+    void deleteById(Long id);
 }

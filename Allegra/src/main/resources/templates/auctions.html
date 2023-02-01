@@ -19,6 +19,9 @@
     </header>
     <div class="auctions_part">
         <h1 class="title">Auctions</h1>
+        <form action='#' th:action="@{/auction/add}" th:method="get">
+            <input type="submit" value="Add Auction"/>
+        </form>
         <div class="auctions_list">
             <div th:each="auction : ${auctions}" class="auctions_auction" >
                 <a th:href="@{/auctions/{id}(id=${auction.auction_id})}">

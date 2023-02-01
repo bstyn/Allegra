@@ -19,18 +19,34 @@
   </header>
   <div>
     <h1>Auction</h1>
-    <p th:text="${auction.auction_id}"></p>
+    <form action='#' th:action="@{'/auction/edit/{id}'(id=${auction.auction_id})}" th:method="get">
+      <input type="submit" value="Edit"/>
+    </form>
+    <form action='#' th:action="@{'/api/auctions/delete/{id}'(id=${auction.auction_id})}" th:method="get">
+      <input type="submit" value="Delete"/>
+    </form>
     <p th:text="${auction.name}"></p>
     <p><img th:src="${auction.url}" class="auction_image"></img></p>
     <p th:text="${auction.start_date}"></p>
     <p th:text="${auction.end_date}"></p>
     <p th:text="${auction.price}"></p>
+    <form th:action="@{/api/reviews/{id}(id=${auction.auction_id})}" method="post">
+      <label for="content">Content</label>:
+      <input type="text" id="content" name="content" autofocus="autofocus" /> <br />
+      <label for="score">Score</label>:
+      <input type="text" id="score" name="score" /> <br />
+      <input type="submit" value="Send" />
+    </form>
     <div th:each="review : ${reviews}" class="auctions_auction" >
-      <form action="#" th:action="@{'/api/reviews/delete/{id}'(id=${review.review_id})}" th:method="get" >
-        <button type="submit" class="btn">
-          Delete
-        </button>
+      <p><form action="#" th:action="@{'/api/reviews/delete/{id}'(id=${review.review_id})}" th:method="get" >
+      <button type="submit" class="btn">
+        Delete
+      </button>
       </form>
+      <form action='#' th:action="@{'/review/edit/{id}'(id=${review.review_id})}" th:method="get">
+        <input type="submit" value="Edit"/>
+      </form>
+      </p>
       <p th:text="${review.content}"></p>
       <p th:text="'Score: ' + ${review.score}"></p>
     </div>
