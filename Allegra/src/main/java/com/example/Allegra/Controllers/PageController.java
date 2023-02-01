@@ -19,8 +19,11 @@ import java.util.Optional;
 @Controller
 public class PageController {
 
-    @Getter @Setter private Long profileId = 1L;
+    @Getter @Setter private static Long profileId;
 
+    public static void setId(Long profileId) {
+        setProfileId(profileId);
+    }
 
     @GetMapping("/")
     public String home(){
@@ -29,12 +32,34 @@ public class PageController {
 
     @GetMapping("/profile")
     public String profile(Model model){
+        if(profileId == null){
+            return "redirect:/login";
+        }
         RestTemplate restTemplate = new RestTemplate();
-        Profile result = restTemplate.getForObject("http://localhost:8080/api/profiles/" + profileId,Profile.class);
+        Profile result = restTemplate.getForObject("http://localhost:8080/api/profiles/get/" + profileId.toString(),Profile.class);
         model.addAttribute("profile",result);
         return "profile";
     }
 
+    @GetMapping("/profile/edit")
+    public String profileEdit(Model model){
+        if(profileId == null){
+            return "redirect:/login";
+        }
+        RestTemplate restTemplate = new RestTemplate();
+        Profile result = restTemplate.getForObject("http://localhost:8080/api/profiles/get/" + profileId.toString(),Profile.class);
+        model.addAttribute("profile",result);
+        return "editProfile";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model){
+        return "login";
+    }
+    @GetMapping("/signup")
+    public String Signup(Model model){
+        return"signup";
+    }
     @GetMapping("/auctions")
     public String auctions(Model model){
 

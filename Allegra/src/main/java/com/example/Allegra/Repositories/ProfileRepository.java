@@ -8,4 +8,8 @@ import java.util.Optional;
 public interface ProfileRepository extends CrudRepository<Profile, Long> {
 
     Optional<Profile> findById(Long id);
+
+    Optional<Profile> findByUsernameAndPassword(String username,String password);
+
+    void deleteById(Long id);
 }

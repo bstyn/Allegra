@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
@@ -17,6 +17,27 @@
       <a href="/profile"><div>Profile</div></a>
     </div>
   </header>
+  <form name="logoutForm" th:action="@{/api/login/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+  </form>
+  <form name="logoutForm" th:action="@{/profile/edit}" method="get">
+    <input type="submit" value="Edit"/>
+  </form>
+  <form action="#" th:action="@{'/api/profiles/delete/{id}'(id=${profile.profile_id})}" th:method="get" >
+    <button type="submit" class="btn">
+      Delete
+    </button>
+  </form>
   <h1>User's profile page</h1>
+  <p th:text="${profile.username}"></p>
+  <p th:text="${profile.name}"></p>
+  <p th:text="${profile.lastname}"></p>
+  <p th:text="${profile.email}"></p>
+  <p th:text="${profile.address.country}"></p>
+  <p th:text="${profile.address.city}"></p>
+  <p th:text="${profile.address.postcode}"></p>
+  <p th:text="${profile.address.street}"></p>
+  <p th:text="${profile.address.number}"></p>
+
 </body>
 </html>

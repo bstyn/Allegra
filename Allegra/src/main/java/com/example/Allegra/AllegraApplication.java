@@ -24,7 +24,7 @@ public class AllegraApplication {
 		AddressRepository repoAd = context.getBean(AddressRepository.class);
 		ReviewRepository repoR = context.getBean(ReviewRepository.class);
 		Address address = new Address("Poland","84-200","Gdańsk","Świętojańska",22);
-		Profile profile = new Profile("Bartek","Nazwisko", "example@example.com", "bstyn", "admin");
+		Profile profile = new Profile("Bartek","Nazwisko", "example@example.com", "bstyn", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918");
 		Auction auction = new Auction("Ps5",new Date(),new Date(),"https://rytmy.pl/wp-content/uploads/bfi_thumb/playstation-5-pzfp9b0ku582y2etccfdns4p0nlb51vplzynmxywzs.jpg",1905.0);
 		Auction auction2 = new Auction("Ps2",new Date(),new Date(),"https://rytmy.pl/wp-content/uploads/bfi_thumb/playstation-5-pzfp9b0ku582y2etccfdns4p0nlb51vplzynmxywzs.jpg",1905.0);
 		Auction auction3 = new Auction("Ps2",new Date(),new Date(),"https://rytmy.pl/wp-content/uploads/bfi_thumb/playstation-5-pzfp9b0ku582y2etccfdns4p0nlb51vplzynmxywzs.jpg",1905.0);

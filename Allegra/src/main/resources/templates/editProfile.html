@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <p>Allegra</p>
+    </div>
+    <div class="context-menu">
+        <a href="/"><div>Main Page</div></a>
+        <a href="/auctions"><div>Auctions</div></a>
+        <a href="/profile"><div>Profile</div></a>
+    </div>
+</header>
+<h1>Edit</h1>
+<form th:action="@{'/api/profiles/edit/{id}'(id=${profile.profile_id})}" th:object="${userdto}" method="put">
+
+    <label for="name">Name</label>:
+    <input type="text" id="name" name="name" th:value=${profile.name}> <br />
+
+    <label for="lastname">Lastname</label>:
+    <input type="text" id="lastname" name="lastname" th:value=${profile.lastname}> <br />
+
+    <label for="email">Email</label>:
+    <input type="text" id="email" name="email" th:value=${profile.email}> <br />
+
+    <label for="country">Country</label>:
+    <input type="text" id="country" name="country" th:value=${profile.address.country}> <br />
+
+    <label for="postcode">Postal Code</label>:
+    <input type="text" id="postcode" name="postcode" th:value=${profile.address.postcode}> <br />
+
+    <label for="city">City</label>:
+    <input type="text" id="city" name="city" th:value=${profile.address.city}> <br />
+
+    <label for="street">Street</label>:
+    <input type="text" id="street" name="street" th:value=${profile.address.Street}> <br />
+
+    <label for="number">Number</label>:
+    <input type="text" id="number" name="number" th:value=${profile.address.number}> <br />
+
+    <input type="submit" value="Apply" />
+</form>
+</body>
+</html>

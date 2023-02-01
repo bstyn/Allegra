@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <p>Allegra</p>
+    </div>
+    <div class="context-menu">
+        <a href="/"><div>Main Page</div></a>
+        <a href="/auctions"><div>Auctions</div></a>
+        <a href="/profile"><div>Profile</div></a>
+    </div>
+</header>
+<h1>Login</h1>
+<form th:action="@{/api/login}" method="post">
+    <label for="username">Username</label>:
+    <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
+    <label for="password">Password</label>:
+    <input type="password" id="password" name="password" /> <br />
+    <input type="submit" value="Log in" />
+    <button><a href="/signup">Sign Up </a></button>
+</form>
+</body>
+</html>
